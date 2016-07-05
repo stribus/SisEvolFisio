@@ -33,9 +33,14 @@ object frmEditor: TfrmEditor
       Font.Style = []
       HideSelection = False
       ParentFont = False
+      PopupMenu = popEdit
       SelText = ''
       TabOrder = 0
       WantTabs = True
+      OnProtectChange = rdtEditorProtectChange
+      OnSelectionChange = rdtEditorSelectionChange
+      OnGetDragDropEffect = rdtEditorGetDragDropEffect
+      OnURLClick = rdtEditorURLClick
     end
     object StatusBar: TStatusBar
       Left = 1
@@ -157,6 +162,7 @@ object frmEditor: TfrmEditor
       end
       object sdiColorBtn: TJvSpeedItem
         Caption = 'Color'
+        DropDownMenu = popColorMenu
         Hint = 'Color|Formats the selection with a color'
         ImageIndex = 16
         MarkDropDown = False
@@ -164,11 +170,11 @@ object frmEditor: TfrmEditor
         Left = 388
         Top = 5
         Visible = True
-        OnClick = sdiColorBtnClick
         SectionName = 'Format'
       end
       object sdiBackgroundBtn: TJvSpeedItem
         Caption = 'Background'
+        DropDownMenu = popBackgroundMenu
         Hint = 'Background|'
         ImageIndex = 24
         MarkDropDown = False
@@ -340,7 +346,7 @@ object frmEditor: TfrmEditor
     Left = 408
     Top = 172
     Bitmap = {
-      494C01011A001E00100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011A001E00140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1270,5 +1276,27 @@ object frmEditor: TfrmEditor
       E003001F8001E001E0038FF18001E007E007FFF98001F007E00FFF758001F003
       E01FFF8F8001F803FFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  object popBackgroundMenu: TJvPopupMenu
+    Style = msOwnerDraw
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 16
+    ImageSize.Width = 16
+    Left = 64
+    Top = 128
+  end
+  object popColorMenu: TJvPopupMenu
+    Style = msOwnerDraw
+    ImageMargin.Left = 0
+    ImageMargin.Top = 0
+    ImageMargin.Right = 0
+    ImageMargin.Bottom = 0
+    ImageSize.Height = 16
+    ImageSize.Width = 16
+    Left = 92
+    Top = 128
   end
 end
