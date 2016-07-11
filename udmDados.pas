@@ -8,18 +8,21 @@ uses
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, Data.DB,
   FireDAC.Comp.Client, FireDAC.Phys.FB, FireDAC.Phys.FBDef, FireDAC.VCLUI.Error,
   FireDAC.VCLUI.Async, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
-  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.UI, UConexao;
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.UI, UConexao,
+  FireDAC.VCLUI.Wait;
 
 type
   TdmDados = class(TDataModule)
     con1: TFDConnection;
-    FDGUIxErrorDialog1: TFDGUIxErrorDialog;
-    FDGUIxAsyncExecuteDialog1: TFDGUIxAsyncExecuteDialog;
+    fdqCons: TFDQuery;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
     procedure con1BeforeConnect(Sender: TObject);
+    procedure DataModuleCreate(Sender: TObject);
   private
     { Private declarations }
   public
-    { Public declarations }
+    function getNextCod(ATabela,ACampo:string;AWhere:String=''):Int64;
+
   end;
 
 var
@@ -28,7 +31,7 @@ var
 implementation
 
 uses
-  Vcl.Forms, Vcl.Dialogs;
+  Vcl.Forms, Vcl.Dialogs, UGeral;
 
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
@@ -54,6 +57,36 @@ begin
   except
     on E: Exception do
       ShowMessage('Erro ao carregar parâmetros de conexão!'#13#10 + E.Message);
+  end;
+end;
+
+procedure TdmDados.DataModuleCreate(Sender: TObject);
+begin
+  if not con1.Connected then
+     con1.Connected := True;
+end;
+
+function TdmDados.getNextCod(ATabela, ACampo, AWhere: String): Int64;
+const
+  SELECT =
+          ' select' +
+          '   max(%s)' +
+          ' from' +
+          '   %s';
+var
+  lSql:TStringBuilder;
+begin
+  lSql := TStringBuilder.Create;
+  try
+    fdqCons.Close;
+    lSql.AppendFormat(SELECT,[Acampo,Atabela]);
+    if AWhere <> '' then
+      lSql.AppendLine.Append(' where ').AppendLine.Append(AWhere);
+    fdqCons.Open(lSql.ToString);
+    result:=fdqCons.FieldByName('max').AsInteger+1;
+    fdqCons.Close;
+  finally
+    tryFreeAndNil(lsql);
   end;
 end;
 

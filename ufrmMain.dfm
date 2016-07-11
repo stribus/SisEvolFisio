@@ -2,7 +2,7 @@ object frmMain: TfrmMain
   Left = 0
   Top = 0
   Caption = 'Sistema'
-  ClientHeight = 759
+  ClientHeight = 746
   ClientWidth = 1121
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,8 +11,17 @@ object frmMain: TfrmMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
+  object spl1: TSplitter
+    Left = 673
+    Top = 49
+    Height = 678
+    ExplicitLeft = 672
+    ExplicitTop = 200
+    ExplicitHeight = 100
+  end
   object pnl1: TPanel
     Left = 0
     Top = 0
@@ -32,19 +41,21 @@ object frmMain: TfrmMain
       Images = il1
       ShowCaptions = True
       TabOrder = 0
-      object btn1: TToolButton
+      object btnAddPaciente: TToolButton
         Left = 0
         Top = 0
         Caption = 'Adicionar'
         ImageIndex = 0
+        OnClick = btnAddPacienteClick
       end
-      object btn2: TToolButton
+      object btnEditar: TToolButton
         Left = 51
         Top = 0
         Caption = 'Editar'
         ImageIndex = 1
+        OnClick = btnEditarClick
       end
-      object btn3: TToolButton
+      object btnExcluir: TToolButton
         Left = 102
         Top = 0
         Caption = 'Excluir'
@@ -55,10 +66,12 @@ object frmMain: TfrmMain
   object JvDBGrid1: TJvDBGrid
     Left = 0
     Top = 49
-    Width = 1121
-    Height = 691
-    Align = alClient
+    Width = 673
+    Height = 678
+    Align = alLeft
     DataSource = dsPacientes
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgTitleClick, dgTitleHotTrack]
+    ReadOnly = True
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
@@ -83,7 +96,7 @@ object frmMain: TfrmMain
         Expanded = False
         FieldName = 'NOME'
         Title.Caption = 'Nome'
-        Width = 436
+        Width = 188
         Visible = True
       end
       item
@@ -97,17 +110,33 @@ object frmMain: TfrmMain
         Expanded = False
         FieldName = 'ENDERECO'
         Title.Caption = 'Endere'#231'o'
-        Width = 399
+        Width = 320
         Visible = True
       end>
   end
   object JvDBGridFooter1: TJvDBGridFooter
     Left = 0
-    Top = 740
+    Top = 727
     Width = 1121
     Height = 19
     SizeGrip = True
     Columns = <>
+  end
+  object JvDBRichEdit1: TJvDBRichEdit
+    Left = 676
+    Top = 49
+    Width = 445
+    Height = 678
+    AdvancedTypography = True
+    Align = alClient
+    AutoAdvancedTypography = False
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
   end
   object il1: TImageList
     Height = 24
@@ -115,7 +144,7 @@ object frmMain: TfrmMain
     Left = 680
     Top = 264
     Bitmap = {
-      494C010105000C00140018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000C00280018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FCE4
       CE00FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDE
@@ -716,6 +745,11 @@ object frmMain: TfrmMain
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000}
   end
+  object dsPacientes: TDataSource
+    DataSet = fdqPacientes
+    Left = 552
+    Top = 216
+  end
   object fdqPacientes: TFDQuery
     Connection = dmDados.con1
     SQL.Strings = (
@@ -727,8 +761,8 @@ object frmMain: TfrmMain
       '    endereco'
       'from'
       '    pacientes')
-    Left = 488
-    Top = 216
+    Left = 432
+    Top = 176
     object fdqPacientesID_PACIENTE: TLargeintField
       FieldName = 'ID_PACIENTE'
       Origin = 'ID_PACIENTE'
@@ -755,10 +789,5 @@ object frmMain: TfrmMain
       Origin = 'ENDERECO'
       Size = 150
     end
-  end
-  object dsPacientes: TDataSource
-    DataSet = fdqPacientes
-    Left = 552
-    Top = 216
   end
 end

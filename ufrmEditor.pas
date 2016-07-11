@@ -164,7 +164,9 @@ end;
 
 procedure TfrmEditor.sdiSubscriptBtnClick(Sender: TObject);
 begin
-  //
+  if FUpdating then
+    Exit;
+  pSetSubscrit;
 end;
 
 procedure TfrmEditor.sdiSuperscriptBtnClick(Sender: TObject);

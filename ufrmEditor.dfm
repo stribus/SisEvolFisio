@@ -28,7 +28,7 @@ object frmEditor: TfrmEditor
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -16
       Font.Name = 'Arial'
       Font.Style = []
       HideSelection = False
@@ -110,7 +110,7 @@ object frmEditor: TfrmEditor
         Decimal = 0
         MaxValue = 2147483647.000000000000000000
         MinValue = 1.000000000000000000
-        Value = 8.000000000000000000
+        Value = 12.000000000000000000
         TabOrder = 1
         OnChange = sdtFontSizeChange
       end
@@ -169,7 +169,6 @@ object frmEditor: TfrmEditor
         Spacing = 1
         Left = 388
         Top = 5
-        Visible = True
         SectionName = 'Format'
       end
       object sdiBackgroundBtn: TJvSpeedItem
@@ -181,7 +180,6 @@ object frmEditor: TfrmEditor
         Spacing = 1
         Left = 412
         Top = 5
-        Visible = True
         OnClick = sdiBackgroundBtnClick
         SectionName = 'Format'
       end
@@ -322,21 +320,21 @@ object frmEditor: TfrmEditor
     Top = 128
     object CutItm: TMenuItem
       Tag = 6
-      Caption = 'Cu&t'
+      Caption = 'Cor&tar'
       GroupIndex = 10
       ShortCut = 16472
       OnClick = sdiCutBtnClick
     end
     object CopyItm: TMenuItem
       Tag = 7
-      Caption = '&Copy'
+      Caption = '&Copiar'
       GroupIndex = 10
       ShortCut = 16451
       OnClick = sdicopybtnClick
     end
     object PasteItm: TMenuItem
       Tag = 8
-      Caption = '&Paste'
+      Caption = 'Co&lar'
       GroupIndex = 10
       ShortCut = 16470
       OnClick = sdipastebtnClick
@@ -346,7 +344,7 @@ object frmEditor: TfrmEditor
     Left = 408
     Top = 172
     Bitmap = {
-      494C01011A001E00140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011A001E00180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
