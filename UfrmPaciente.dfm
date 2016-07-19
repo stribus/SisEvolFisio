@@ -11,6 +11,7 @@ object frmPaciente: TfrmPaciente
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -155,6 +156,7 @@ object frmPaciente: TfrmPaciente
       Top = 99
       Width = 985
       Height = 410
+      VertScrollBar.Position = 406
       Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 5
       DesignSize = (
@@ -162,8 +164,8 @@ object frmPaciente: TfrmPaciente
         406)
       object gpnDiagnosticos: TGridPanel
         Left = 0
-        Top = 0
-        Width = 898
+        Top = -406
+        Width = 793
         Height = 417
         Anchors = [akLeft, akTop, akRight]
         BevelOuter = bvNone
@@ -214,13 +216,13 @@ object frmPaciente: TfrmPaciente
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 449
+          Width = 396
           Height = 139
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
           DesignSize = (
-            449
+            396
             139)
           object lbl1: TLabel
             Left = 4
@@ -232,7 +234,7 @@ object frmPaciente: TfrmPaciente
           object redtDiagClinico: TRichEdit
             Left = 4
             Top = 22
-            Width = 440
+            Width = 377
             Height = 111
             Anchors = [akLeft, akTop, akRight, akBottom]
             Font.Charset = ANSI_CHARSET
@@ -246,15 +248,15 @@ object frmPaciente: TfrmPaciente
           end
         end
         object pnl2: TPanel
-          Left = 449
+          Left = 396
           Top = 0
-          Width = 449
+          Width = 397
           Height = 139
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
           DesignSize = (
-            449
+            397
             139)
           object lbl2: TLabel
             Left = 4
@@ -266,7 +268,7 @@ object frmPaciente: TfrmPaciente
           object redtAvalFisio: TRichEdit
             Left = 4
             Top = 22
-            Width = 439
+            Width = 387
             Height = 111
             Anchors = [akLeft, akTop, akRight, akBottom]
             Font.Charset = ANSI_CHARSET
@@ -282,13 +284,13 @@ object frmPaciente: TfrmPaciente
         object pnl3: TPanel
           Left = 0
           Top = 139
-          Width = 449
+          Width = 396
           Height = 138
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
           DesignSize = (
-            449
+            396
             138)
           object lbl3: TLabel
             Left = 4
@@ -300,7 +302,7 @@ object frmPaciente: TfrmPaciente
           object redtdiagFisio: TRichEdit
             Left = 4
             Top = 22
-            Width = 440
+            Width = 387
             Height = 110
             Anchors = [akLeft, akTop, akRight, akBottom]
             Font.Charset = ANSI_CHARSET
@@ -314,15 +316,15 @@ object frmPaciente: TfrmPaciente
           end
         end
         object pnl4: TPanel
-          Left = 449
+          Left = 396
           Top = 139
-          Width = 449
+          Width = 397
           Height = 138
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 3
           DesignSize = (
-            449
+            397
             138)
           object lbl4: TLabel
             Left = 4
@@ -334,7 +336,7 @@ object frmPaciente: TfrmPaciente
           object redtObjetivo: TRichEdit
             Left = 4
             Top = 22
-            Width = 439
+            Width = 387
             Height = 110
             Anchors = [akLeft, akTop, akRight, akBottom]
             Font.Charset = ANSI_CHARSET
@@ -350,13 +352,13 @@ object frmPaciente: TfrmPaciente
         object pnl5: TPanel
           Left = 0
           Top = 277
-          Width = 449
+          Width = 396
           Height = 140
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 4
           DesignSize = (
-            449
+            396
             140)
           object lbl5: TLabel
             Left = 4
@@ -368,7 +370,7 @@ object frmPaciente: TfrmPaciente
           object redtCondutaFisio: TRichEdit
             Left = 4
             Top = 22
-            Width = 440
+            Width = 387
             Height = 111
             Anchors = [akLeft, akTop, akRight, akBottom]
             Font.Charset = ANSI_CHARSET
@@ -384,7 +386,7 @@ object frmPaciente: TfrmPaciente
       end
       object pnl6: TPanel
         Left = 0
-        Top = 423
+        Top = 17
         Width = 961
         Height = 431
         Anchors = [akLeft, akTop, akRight]
@@ -557,6 +559,8 @@ object frmPaciente: TfrmPaciente
           Font.Style = []
           Anchors = [akLeft, akTop, akRight, akBottom]
           ParentFont = False
+          StreamFormat = sfRichText
+          StreamMode = [smPlainRtf]
           TabOrder = 1
         end
         object dbgEvolucoes: TJvDBGrid
@@ -603,6 +607,15 @@ object frmPaciente: TfrmPaciente
           ShowNullDate = False
           StartOfWeek = Sun
           TabOrder = 2
+        end
+        object btnEditacaoAvancada: TButton
+          Left = 394
+          Top = 34
+          Width = 108
+          Height = 40
+          Caption = 'Edi'#231#227'o Avan'#231'ada'
+          TabOrder = 3
+          OnClick = btnEditacaoAvancadaClick
         end
       end
     end

@@ -11,6 +11,8 @@ object frmMain: TfrmMain
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
+  WindowState = wsMaximized
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
@@ -63,7 +65,7 @@ object frmMain: TfrmMain
       end
     end
   end
-  object JvDBGrid1: TJvDBGrid
+  object dbgPacientes: TJvDBGrid
     Left = 0
     Top = 49
     Width = 673
@@ -78,6 +80,7 @@ object frmMain: TfrmMain
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnDblClick = dbgPacientesDblClick
     SelectColumnsDialogStrings.Caption = 'Select columns'
     SelectColumnsDialogStrings.OK = '&OK'
     SelectColumnsDialogStrings.NoSelectionWarning = 'At least one column must be visible!'
@@ -122,7 +125,7 @@ object frmMain: TfrmMain
     SizeGrip = True
     Columns = <>
   end
-  object JvDBRichEdit1: TJvDBRichEdit
+  object dbrdtEvolucao: TJvDBRichEdit
     Left = 676
     Top = 49
     Width = 445
@@ -144,7 +147,7 @@ object frmMain: TfrmMain
     Left = 680
     Top = 264
     Bitmap = {
-      494C010105000C00280018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000C00300018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FCE4
       CE00FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDE

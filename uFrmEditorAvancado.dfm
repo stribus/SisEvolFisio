@@ -1,352 +1,53 @@
-object frmEditor: TfrmEditor
-  Left = 0
-  Top = 0
-  Caption = 'Editor'
-  ClientHeight = 593
-  ClientWidth = 824
-  Color = clBtnFace
-  Font.Charset = DEFAULT_CHARSET
-  Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
-  Font.Style = []
-  OldCreateOrder = False
+inherited frmEditorAvancado: TfrmEditorAvancado
+  Caption = ''
+  ExplicitTop = -56
   PixelsPerInch = 96
   TextHeight = 13
-  object pnlEditor: TPanel
-    Left = 0
-    Top = 30
-    Width = 824
-    Height = 563
-    Align = alClient
-    TabOrder = 0
-    object rdtEditor: TJvRichEdit
-      Left = 1
-      Top = 1
-      Width = 822
-      Height = 542
-      Align = alClient
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -16
-      Font.Name = 'Arial'
-      Font.Style = []
-      HideSelection = False
-      ParentFont = False
-      PopupMenu = popEdit
-      SelText = ''
-      StreamFormat = sfRichText
-      StreamMode = [smPlainRtf]
-      TabOrder = 0
-      WantTabs = True
-      OnProtectChange = rdtEditorProtectChange
-      OnSelectionChange = rdtEditorSelectionChange
-      OnGetDragDropEffect = rdtEditorGetDragDropEffect
-      OnURLClick = rdtEditorURLClick
+  inherited pnlEditor: TPanel
+    inherited rdtEditor: TJvRichEdit
+      Height = 501
+      ExplicitHeight = 352
     end
-    object StatusBar: TStatusBar
-      Left = 1
-      Top = 543
-      Width = 822
-      Height = 19
-      Panels = <
-        item
-          Width = 120
-        end
-        item
-          Alignment = taCenter
-          Width = 60
-        end
-        item
-          Width = 50
-        end>
+    inherited StatusBar: TStatusBar
+      Top = 502
+      ExplicitLeft = 0
+      ExplicitTop = 415
     end
-  end
-  object pnlBotoes: TPanel
-    Left = 0
-    Top = 0
-    Width = 824
-    Height = 30
-    Align = alTop
-    BevelOuter = bvNone
-    TabOrder = 1
-    object spbFormatBar: TJvSpeedBar
-      Left = 0
-      Top = 0
-      Width = 824
-      Height = 31
-      ParentFont = True
-      BoundLines = [blTop, blBottom]
-      Options = [sbFlatBtns]
-      BtnOffsetHorz = 4
-      BtnOffsetVert = 5
-      BtnWidth = 24
-      BtnHeight = 23
-      Images = ilToolbarImages
-      BevelOuter = bvNone
-      BevelWidth = 0
-      TabOrder = 0
-      InternalVer = 1
-      object fcbFontName: TJvFontComboBox
-        Left = 85
-        Top = 6
-        Width = 175
-        Height = 22
-        DroppedDownWidth = 175
-        MaxMRUCount = 0
-        FontName = 'Courier New'
-        Device = fdBoth
-        ItemIndex = 96
-        Options = [foWysiWyg]
-        Sorted = True
+    object pnl1: TPanel
+      Left = 1
+      Top = 521
+      Width = 822
+      Height = 41
+      Align = alBottom
+      TabOrder = 2
+      ExplicitLeft = 392
+      ExplicitTop = 496
+      ExplicitWidth = 185
+      object btnOk: TButton
+        Left = 335
+        Top = 8
+        Width = 75
+        Height = 25
+        Caption = 'OK'
+        Default = True
+        ModalResult = 1
         TabOrder = 0
-        OnChange = fcbFontNameChange
       end
-      object sdtFontSize: TJvSpinEdit
-        Left = 264
-        Top = 5
-        Width = 42
-        Height = 21
-        Alignment = taRightJustify
-        ButtonKind = bkStandard
-        Decimal = 0
-        MaxValue = 2147483647.000000000000000000
-        MinValue = 1.000000000000000000
-        Value = 12.000000000000000000
+      object btnCancel: TButton
+        Left = 416
+        Top = 8
+        Width = 75
+        Height = 25
+        Cancel = True
+        Caption = 'Cancelar'
+        ModalResult = 2
         TabOrder = 1
-        OnChange = sdtFontSizeChange
-      end
-      object sbsSpeedbarSection3: TJvSpeedBarSection
-        Caption = 'Format'
-      end
-      object sbs1: TJvSpeedBarSection
-        Caption = 'Editar'
-      end
-      object sdiBoldBtn: TJvSpeedItem
-        AllowAllUp = True
-        Caption = 'Bold'
-        GroupIndex = 5
-        Hint = 'Bold'
-        ImageIndex = 13
-        Spacing = 1
-        Left = 308
-        Top = 5
-        Visible = True
-        OnClick = sdiBoldBtnClick
-        SectionName = 'Format'
-      end
-      object sdiItalicBtn: TJvSpeedItem
-        AllowAllUp = True
-        Caption = 'Italic'
-        GroupIndex = 6
-        Hint = 'Italic'
-        ImageIndex = 14
-        Spacing = 1
-        Left = 332
-        Top = 5
-        Visible = True
-        OnClick = sdiItalicBtnClick
-        SectionName = 'Format'
-      end
-      object sdiUnderlineBtn: TJvSpeedItem
-        AllowAllUp = True
-        Caption = 'Underline'
-        GroupIndex = 7
-        Hint = 'Underline'
-        ImageIndex = 15
-        MarkDropDown = False
-        Spacing = 1
-        Left = 356
-        Top = 5
-        Visible = True
-        OnClick = sdiUnderlineBtnClick
-        SectionName = 'Format'
-      end
-      object sdiColorBtn: TJvSpeedItem
-        Caption = 'Color'
-        DropDownMenu = popColorMenu
-        Hint = 'Color|Formats the selection with a color'
-        ImageIndex = 16
-        MarkDropDown = False
-        Spacing = 1
-        Left = 388
-        Top = 5
-        SectionName = 'Format'
-      end
-      object sdiBackgroundBtn: TJvSpeedItem
-        Caption = 'Background'
-        DropDownMenu = popBackgroundMenu
-        Hint = 'Background|'
-        ImageIndex = 24
-        MarkDropDown = False
-        Spacing = 1
-        Left = 412
-        Top = 5
-        OnClick = sdiBackgroundBtnClick
-        SectionName = 'Format'
-      end
-      object sdiLeftBtn: TJvSpeedItem
-        Caption = 'Align Left'
-        GroupIndex = 2
-        Hint = 'Align Left'
-        ImageIndex = 17
-        Spacing = 1
-        Left = 444
-        Top = 5
-        Visible = True
-        OnClick = sdiLeftBtnClick
-        SectionName = 'Format'
-      end
-      object sdiCenterBtn: TJvSpeedItem
-        Tag = 2
-        Caption = 'Center'
-        GroupIndex = 2
-        Hint = 'Center'
-        ImageIndex = 18
-        Spacing = 1
-        Left = 468
-        Top = 5
-        Visible = True
-        OnClick = sdiCenterBtnClick
-        SectionName = 'Format'
-      end
-      object sdiRightBtn: TJvSpeedItem
-        Tag = 1
-        Caption = 'Align Right'
-        GroupIndex = 2
-        Hint = 'Align Right'
-        ImageIndex = 19
-        Spacing = 1
-        Left = 492
-        Top = 5
-        Visible = True
-        OnClick = sdiRightBtnClick
-        SectionName = 'Format'
-      end
-      object sdiJustifyBtn: TJvSpeedItem
-        Tag = 3
-        Caption = 'Justify'
-        GroupIndex = 2
-        Hint = 'Justify'
-        ImageIndex = 23
-        Spacing = 1
-        Left = 516
-        Top = 5
-        Visible = True
-        OnClick = sdiJustifyBtnClick
-        SectionName = 'Format'
-      end
-      object sdiSuperscriptBtn: TJvSpeedItem
-        AllowAllUp = True
-        Caption = 'Superscript'
-        GroupIndex = 3
-        Hint = 'Superscript'
-        ImageIndex = 21
-        Spacing = 1
-        Left = 548
-        Top = 5
-        Visible = True
-        OnClick = sdiSuperscriptBtnClick
-        SectionName = 'Format'
-      end
-      object sdiSubscriptBtn: TJvSpeedItem
-        AllowAllUp = True
-        Caption = 'Subscript'
-        GroupIndex = 3
-        Hint = 'Subscript'
-        ImageIndex = 22
-        Spacing = 1
-        Left = 572
-        Top = 5
-        Visible = True
-        OnClick = sdiSubscriptBtnClick
-        SectionName = 'Format'
-      end
-      object sdiBulletsBtn: TJvSpeedItem
-        AllowAllUp = True
-        Caption = 'Bullets'
-        GroupIndex = 4
-        Hint = 'Bullets|Enter bullet mode'
-        ImageIndex = 20
-        Spacing = 1
-        Left = 596
-        Top = 5
-        Visible = True
-        OnClick = sdiBulletsBtnClick
-        SectionName = 'Format'
-      end
-      object sdiCutBtn: TJvSpeedItem
-        Caption = 'Cut'
-        Hint = 'Cut|'
-        ImageIndex = 6
-        Spacing = 1
-        Left = 4
-        Top = 5
-        Visible = True
-        OnClick = sdiCutBtnClick
-        SectionName = 'Editar'
-      end
-      object sdicopybtn: TJvSpeedItem
-        Caption = 'Copy'
-        Hint = 'Copy|'
-        ImageIndex = 7
-        Spacing = 1
-        Left = 28
-        Top = 5
-        Visible = True
-        OnClick = sdicopybtnClick
-        SectionName = 'Editar'
-      end
-      object sdipastebtn: TJvSpeedItem
-        Caption = 'Paste'
-        Hint = 'Paste|'
-        ImageIndex = 8
-        Spacing = 1
-        Left = 52
-        Top = 5
-        Visible = True
-        OnClick = sdipastebtnClick
-        SectionName = 'Editar'
       end
     end
   end
-  object popEdit: TJvPopupMenu
-    Style = msXP
-    ImageMargin.Left = 0
-    ImageMargin.Top = 0
-    ImageMargin.Right = 0
-    ImageMargin.Bottom = 0
-    ImageSize.Height = 0
-    ImageSize.Width = 0
-    Left = 36
-    Top = 128
-    object CutItm: TMenuItem
-      Tag = 6
-      Caption = 'Cor&tar'
-      GroupIndex = 10
-      ShortCut = 16472
-      OnClick = sdiCutBtnClick
-    end
-    object CopyItm: TMenuItem
-      Tag = 7
-      Caption = '&Copiar'
-      GroupIndex = 10
-      ShortCut = 16451
-      OnClick = sdicopybtnClick
-    end
-    object PasteItm: TMenuItem
-      Tag = 8
-      Caption = 'Co&lar'
-      GroupIndex = 10
-      ShortCut = 16470
-      OnClick = sdipastebtnClick
-    end
-  end
-  object ilToolbarImages: TImageList
-    Left = 408
-    Top = 172
+  inherited ilToolbarImages: TImageList
     Bitmap = {
-      494C01011A001E001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011A001E00300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1276,27 +977,5 @@ object frmEditor: TfrmEditor
       E003001F8001E001E0038FF18001E007E007FFF98001F007E00FFF758001F003
       E01FFF8F8001F803FFFFFFFFFFFFFFFF00000000000000000000000000000000
       000000000000}
-  end
-  object popBackgroundMenu: TJvPopupMenu
-    Style = msOwnerDraw
-    ImageMargin.Left = 0
-    ImageMargin.Top = 0
-    ImageMargin.Right = 0
-    ImageMargin.Bottom = 0
-    ImageSize.Height = 16
-    ImageSize.Width = 16
-    Left = 64
-    Top = 128
-  end
-  object popColorMenu: TJvPopupMenu
-    Style = msOwnerDraw
-    ImageMargin.Left = 0
-    ImageMargin.Top = 0
-    ImageMargin.Right = 0
-    ImageMargin.Bottom = 0
-    ImageSize.Height = 16
-    ImageSize.Width = 16
-    Left = 92
-    Top = 128
   end
 end

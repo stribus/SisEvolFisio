@@ -12,7 +12,8 @@ uses
   UConexao in 'UConexao.pas',
   ufrmEditor in 'ufrmEditor.pas' {frmEditor},
   UfrmPaciente in 'UfrmPaciente.pas' {frmPaciente},
-  UGeral in 'UGeral.pas';
+  UGeral in 'UGeral.pas',
+  uFrmEditorAvancado in 'uFrmEditorAvancado.pas' {frmEditorAvancado};
 
 {$R *.res}
 

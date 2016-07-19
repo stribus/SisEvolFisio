@@ -191,9 +191,9 @@ Coordinates=219,265,40,33
 Visible=False
 
 [dbrdtEVOLUCAO]
-Coordinates=515,143,99,33
+Coordinates=515,143,99,51
 ExplicitSubNodes=Enabled
-Visible=False
+Visible=True
 
 [redtAvalFisio]
 Coordinates=368,232,79,51
@@ -245,4 +245,7 @@ Coordinates=0,0,40,33
 
 [bdsdbPacientes]
 Coordinates=189,69,93,267
+
+[btnEditacaoAvancada]
+Coordinates=309,87,121,51
 

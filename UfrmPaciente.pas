@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, udmdados, FireDAC.Stan.Intf,DateUtils ,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, uFrmEditorAvancado,
   Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.ExtCtrls,
   JvExMask, JvToolEdit, JvDBControls, Vcl.Mask, Vcl.DBCtrls, Data.Bind.EngExt,
   Vcl.Bind.DBEngExt, System.Rtti, System.Bindings.Outputs, Vcl.Bind.Editors,
@@ -83,6 +83,7 @@ type
     lpfLinesText2: TLinkPropertyToField;
     lpfLinesText3: TLinkPropertyToField;
     lpfLinesText4: TLinkPropertyToField;
+    btnEditacaoAvancada: TButton;
     procedure fdqPacienteCalcFields(DataSet: TDataSet);
     procedure btnOkClick(Sender: TObject);
     procedure spbAddEvolClick(Sender: TObject);
@@ -90,6 +91,7 @@ type
     procedure fdqEvolucaoAfterScroll(DataSet: TDataSet);
     procedure spbRemEvolClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure btnEditacaoAvancadaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -106,6 +108,30 @@ implementation
 {$R *.dfm}
 
 uses UGeral;
+
+procedure TfrmPaciente.btnEditacaoAvancadaClick(Sender: TObject);
+var
+  lStream :TStream;
+  LTexto:string;
+begin
+  try
+    if dbrdtEVOLUCAO.Enabled then
+    begin
+      lStream := TStringStream.Create;
+      dbrdtEVOLUCAO.Lines.SaveToStream(lStream);
+      lStream.Position :=0;
+      if TfrmEditorAvancado.editar(Self,lStream) and Assigned(lStream)then
+      begin
+        lStream.Position :=0;
+        if not (dbrdtEVOLUCAO.DataSource.DataSet.State in dsWriteModes) then
+          dbrdtEVOLUCAO.DataSource.DataSet.Edit;
+        TBlobField(dbrdtEVOLUCAO.Field).LoadFromStream(lStream);
+      end;
+    end;
+  finally
+    tryFreeAndNil(lStream);
+  end;
+end;
 
 procedure TfrmPaciente.btnOkClick(Sender: TObject);
 begin

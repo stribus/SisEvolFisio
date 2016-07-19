@@ -20,10 +20,10 @@ type
     btnEditar: TToolButton;
     btnExcluir: TToolButton;
     il1: TImageList;
-    JvDBGrid1: TJvDBGrid;
+    dbgPacientes: TJvDBGrid;
     JvDBGridFooter1: TJvDBGridFooter;
     dsPacientes: TDataSource;
-    JvDBRichEdit1: TJvDBRichEdit;
+    dbrdtEvolucao: TJvDBRichEdit;
     spl1: TSplitter;
     fdqPacientes: TFDQuery;
     fdqPacientesID_PACIENTE: TLargeintField;
@@ -34,6 +34,7 @@ type
     procedure btnAddPacienteClick(Sender: TObject);
     procedure btnEditarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure dbgPacientesDblClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,11 +61,17 @@ end;
 
 procedure TfrmMain.btnEditarClick(Sender: TObject);
 begin
-  if TfrmPaciente.EditarPaciente(Self,fdqPacientesID_PACIENTE.AsInteger) then
+  if (not fdqPacientes.IsEmpty)
+    and TfrmPaciente.EditarPaciente(Self,fdqPacientesID_PACIENTE.AsInteger) then
   begin
     fdqPacientes.Close;
     fdqPacientes.Open;
   end;
+end;
+
+procedure TfrmMain.dbgPacientesDblClick(Sender: TObject);
+begin
+  btnEditar.Click;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
