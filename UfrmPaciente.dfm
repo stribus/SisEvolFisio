@@ -12,6 +12,7 @@ object frmPaciente: TfrmPaciente
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  WindowState = wsMaximized
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -156,7 +157,6 @@ object frmPaciente: TfrmPaciente
       Top = 99
       Width = 985
       Height = 410
-      VertScrollBar.Position = 406
       Anchors = [akLeft, akTop, akRight, akBottom]
       TabOrder = 5
       DesignSize = (
@@ -164,8 +164,8 @@ object frmPaciente: TfrmPaciente
         406)
       object gpnDiagnosticos: TGridPanel
         Left = 0
-        Top = -406
-        Width = 793
+        Top = 0
+        Width = 919
         Height = 417
         Anchors = [akLeft, akTop, akRight]
         BevelOuter = bvNone
@@ -216,13 +216,13 @@ object frmPaciente: TfrmPaciente
         object pnl1: TPanel
           Left = 0
           Top = 0
-          Width = 396
+          Width = 459
           Height = 139
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
           DesignSize = (
-            396
+            459
             139)
           object lbl1: TLabel
             Left = 4
@@ -231,32 +231,34 @@ object frmPaciente: TfrmPaciente
             Height = 13
             Caption = 'Diagn'#243'stico Cl'#237'nico'
           end
-          object redtDiagClinico: TRichEdit
+          object dbredtDiagClinico: TDBRichEdit
             Left = 4
             Top = 22
-            Width = 377
+            Width = 450
             Height = 111
             Anchors = [akLeft, akTop, akRight, akBottom]
+            DataField = 'DIAG_CLINICO'
+            DataSource = dtsPaciente
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ParentFont = False
+            ScrollBars = ssVertical
             TabOrder = 0
             Zoom = 100
           end
         end
         object pnl2: TPanel
-          Left = 396
+          Left = 459
           Top = 0
-          Width = 397
+          Width = 460
           Height = 139
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 1
           DesignSize = (
-            397
+            460
             139)
           object lbl2: TLabel
             Left = 4
@@ -265,18 +267,20 @@ object frmPaciente: TfrmPaciente
             Height = 13
             Caption = 'Avalia'#231#227'o Terapeutica'
           end
-          object redtAvalFisio: TRichEdit
+          object dbredtAvalFisio: TDBRichEdit
             Left = 4
             Top = 22
-            Width = 387
+            Width = 450
             Height = 111
             Anchors = [akLeft, akTop, akRight, akBottom]
+            DataField = 'AVAL_FISIO'
+            DataSource = dtsPaciente
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ParentFont = False
+            ScrollBars = ssVertical
             TabOrder = 0
             Zoom = 100
           end
@@ -284,13 +288,13 @@ object frmPaciente: TfrmPaciente
         object pnl3: TPanel
           Left = 0
           Top = 139
-          Width = 396
+          Width = 459
           Height = 138
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 2
           DesignSize = (
-            396
+            459
             138)
           object lbl3: TLabel
             Left = 4
@@ -299,32 +303,34 @@ object frmPaciente: TfrmPaciente
             Height = 13
             Caption = 'Diagn'#243'stico Fisioterapeutico'
           end
-          object redtdiagFisio: TRichEdit
+          object dbredtFisio: TDBRichEdit
             Left = 4
             Top = 22
-            Width = 387
+            Width = 450
             Height = 110
             Anchors = [akLeft, akTop, akRight, akBottom]
+            DataField = 'DIAG_FISIO'
+            DataSource = dtsPaciente
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ParentFont = False
+            ScrollBars = ssVertical
             TabOrder = 0
             Zoom = 100
           end
         end
         object pnl4: TPanel
-          Left = 396
+          Left = 459
           Top = 139
-          Width = 397
+          Width = 460
           Height = 138
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 3
           DesignSize = (
-            397
+            460
             138)
           object lbl4: TLabel
             Left = 4
@@ -333,18 +339,20 @@ object frmPaciente: TfrmPaciente
             Height = 13
             Caption = 'Objetivo'
           end
-          object redtObjetivo: TRichEdit
+          object dbredtObjetivo: TDBRichEdit
             Left = 4
             Top = 22
-            Width = 387
+            Width = 450
             Height = 110
             Anchors = [akLeft, akTop, akRight, akBottom]
+            DataField = 'OBJETIVO'
+            DataSource = dtsPaciente
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ParentFont = False
+            ScrollBars = ssVertical
             TabOrder = 0
             Zoom = 100
           end
@@ -352,13 +360,13 @@ object frmPaciente: TfrmPaciente
         object pnl5: TPanel
           Left = 0
           Top = 277
-          Width = 396
+          Width = 459
           Height = 140
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 4
           DesignSize = (
-            396
+            459
             140)
           object lbl5: TLabel
             Left = 4
@@ -367,18 +375,20 @@ object frmPaciente: TfrmPaciente
             Height = 13
             Caption = 'Conduta Fisioterapeuta'
           end
-          object redtCondutaFisio: TRichEdit
+          object dbredtCondutaFisio: TDBRichEdit
             Left = 4
             Top = 22
-            Width = 387
+            Width = 450
             Height = 111
             Anchors = [akLeft, akTop, akRight, akBottom]
+            DataField = 'CONDUTA_FISIO'
+            DataSource = dtsPaciente
             Font.Charset = ANSI_CHARSET
             Font.Color = clWindowText
             Font.Height = -11
             Font.Name = 'Tahoma'
             Font.Style = []
-            ParentFont = False
+            ScrollBars = ssVertical
             TabOrder = 0
             Zoom = 100
           end
@@ -386,7 +396,7 @@ object frmPaciente: TfrmPaciente
       end
       object pnl6: TPanel
         Left = 0
-        Top = 17
+        Top = 423
         Width = 961
         Height = 431
         Anchors = [akLeft, akTop, akRight]
@@ -780,52 +790,5 @@ object frmPaciente: TfrmPaciente
     DataSet = fdqEvolucao
     Left = 496
     Top = 288
-  end
-  object bdsdbPacientes: TBindSourceDB
-    DataSource = dtsPaciente
-    ScopeMappings = <>
-    Left = 456
-    Top = 192
-  end
-  object bdl1: TBindingsList
-    Methods = <>
-    OutputConverters = <>
-    Left = 20
-    Top = 5
-    object lpfLinesText: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = bdsdbPacientes
-      FieldName = 'AVAL_FISIO'
-      Component = redtAvalFisio
-      ComponentProperty = 'Lines.Text'
-    end
-    object lpfLinesText1: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = bdsdbPacientes
-      FieldName = 'DIAG_CLINICO'
-      Component = redtDiagClinico
-      ComponentProperty = 'Lines.Text'
-    end
-    object lpfLinesText2: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = bdsdbPacientes
-      FieldName = 'OBJETIVO'
-      Component = redtObjetivo
-      ComponentProperty = 'Lines.Text'
-    end
-    object lpfLinesText3: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = bdsdbPacientes
-      FieldName = 'CONDUTA_FISIO'
-      Component = redtCondutaFisio
-      ComponentProperty = 'Lines.Text'
-    end
-    object lpfLinesText4: TLinkPropertyToField
-      Category = 'Quick Bindings'
-      DataSource = bdsdbPacientes
-      FieldName = 'DIAG_FISIO'
-      Component = redtdiagFisio
-      ComponentProperty = 'Lines.Text'
-    end
   end
 end

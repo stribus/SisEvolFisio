@@ -10,16 +10,18 @@ Coordinates=10,204,47,33
 Visible=False
 
 [fdqPaciente]
-Coordinates=10,420,89,249
+Coordinates=282,80,89,249
 
 [fdqPacienteDIAG_CLINICO]
 Coordinates=377,1,146,33
+Visible=True
 
 [fdqPacienteCODIGO]
 Coordinates=10,326,114,33
 
 [fdqPacienteCONDUTA_FISIO]
 Coordinates=588,1,156,33
+Visible=True
 
 [fdqPacienteNASCIMENTO]
 Coordinates=96,369,141,33
@@ -29,17 +31,21 @@ Coordinates=443,10,46,33
 Visible=False
 
 [fdqPacienteOBJETIVO]
-Coordinates=830,180,124,33
+Coordinates=830,180,124,51
 ExplicitSubNodes=Value
+Visible=True
 
 [fdqPacienteAVAL_FISIO]
 Coordinates=377,221,133,33
+Visible=True
 
 [fdqPacienteNOME]
 Coordinates=255,326,103,33
 
 [fdqPacienteDIAG_FISIO]
-Coordinates=377,331,131,33
+Coordinates=190,320,131,69
+Visible=True
+ExplicitSubNodes=AsString;Value
 
 [fdqEvolucao]
 Coordinates=10,10,76,33
@@ -67,15 +73,15 @@ Coordinates=61,143,52,33
 Visible=False
 
 [dtsPaciente]
-Coordinates=377,441,72,33
-Visible=False
+Coordinates=1208,200,72,33
+Visible=True
 
 [Label5]
 Coordinates=459,143,46,33
 Visible=False
 
 []
-Coordinates=136,87,75,33
+Coordinates=0,220,99,51
 ExplicitSubNodes=Lines.Text
 Visible=True
 
@@ -126,14 +132,6 @@ Coordinates=588,285,147,33
 Coordinates=134,326,111,33
 Visible=False
 
-[redtCondutaFisio]
-Coordinates=10,177,99,51
-ExplicitSubNodes=Lines.Text
-
-[redtdiagFisio]
-Coordinates=368,10,79,51
-ExplicitSubNodes=Lines.Text
-
 [lbl4]
 Coordinates=360,204,40,33
 Visible=False
@@ -174,10 +172,6 @@ Visible=False
 Coordinates=61,265,97,33
 Visible=False
 
-[redtDiagClinico]
-Coordinates=362,343,90,51
-ExplicitSubNodes=Lines.Text
-
 [pnl1]
 Coordinates=364,265,40,33
 Visible=False
@@ -191,20 +185,12 @@ Coordinates=219,265,40,33
 Visible=False
 
 [dbrdtEVOLUCAO]
-Coordinates=515,143,99,51
+Coordinates=620,130,99,51
 ExplicitSubNodes=Enabled
 Visible=True
 
-[redtAvalFisio]
-Coordinates=368,232,79,51
-ExplicitSubNodes=Lines.Text
-
 [sbx1]
 Coordinates=125,420,40,33
-
-[redtObjetivo]
-Coordinates=370,121,74,51
-ExplicitSubNodes=Lines.Text
 
 [lblEvolucoes]
 Coordinates=372,143,77,33
@@ -240,12 +226,6 @@ Coordinates=640,265,140,33
 Coordinates=556,265,74,33
 Visible=False
 
-[bdl1]
-Coordinates=0,0,40,33
-
-[bdsdbPacientes]
-Coordinates=189,69,93,267
-
 [btnEditacaoAvancada]
-Coordinates=309,87,121,51
+Coordinates=10,80,121,51
 
