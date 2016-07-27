@@ -1,17 +1,15 @@
 inherited frmEditorAvancado: TfrmEditorAvancado
   Caption = ''
-  ExplicitTop = -56
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnlEditor: TPanel
     inherited rdtEditor: TJvRichEdit
       Height = 501
-      ExplicitHeight = 352
+      ExplicitHeight = 501
     end
     inherited StatusBar: TStatusBar
       Top = 502
-      ExplicitLeft = 0
-      ExplicitTop = 415
+      ExplicitTop = 502
     end
     object pnl1: TPanel
       Left = 1
@@ -20,9 +18,6 @@ inherited frmEditorAvancado: TfrmEditorAvancado
       Height = 41
       Align = alBottom
       TabOrder = 2
-      ExplicitLeft = 392
-      ExplicitTop = 496
-      ExplicitWidth = 185
       object btnOk: TButton
         Left = 335
         Top = 8
@@ -47,7 +42,7 @@ inherited frmEditorAvancado: TfrmEditorAvancado
   end
   inherited ilToolbarImages: TImageList
     Bitmap = {
-      494C01011A001E00300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011A001E00340010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000007000000001002000000000000070
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

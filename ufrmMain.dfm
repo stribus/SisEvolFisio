@@ -125,21 +125,33 @@ object frmMain: TfrmMain
     SizeGrip = True
     Columns = <>
   end
-  object dbrdtEvolucao: TJvDBRichEdit
+  object pnl2: TPanel
     Left = 676
     Top = 49
     Width = 445
     Height = 678
-    AdvancedTypography = True
     Align = alClient
-    AutoAdvancedTypography = False
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
     TabOrder = 3
+    ExplicitLeft = 816
+    ExplicitTop = 304
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object frpEvolucao: TfrxPreview
+      Left = 1
+      Top = 1
+      Width = 443
+      Height = 676
+      Align = alClient
+      ActiveFrameColor = clBlack
+      OutlineVisible = False
+      OutlineWidth = 120
+      ThumbnailVisible = False
+      UseReportHints = False
+      ExplicitLeft = 345
+      ExplicitTop = 344
+      ExplicitWidth = 100
+      ExplicitHeight = 100
+    end
   end
   object il1: TImageList
     Height = 24
@@ -147,7 +159,7 @@ object frmMain: TfrmMain
     Left = 680
     Top = 264
     Bitmap = {
-      494C010105000C00300018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010105000C00340018001800FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000600000003000000001002000000000000048
       000000000000000000000000000000000000FFFFFF00FFFFFF00FFFFFF00FCE4
       CE00FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDEC300FCDE
@@ -750,10 +762,11 @@ object frmMain: TfrmMain
   end
   object dsPacientes: TDataSource
     DataSet = fdqPacientes
-    Left = 552
-    Top = 216
+    Left = 472
+    Top = 176
   end
   object fdqPacientes: TFDQuery
+    AfterScroll = fdqPacientesAfterScroll
     Connection = dmDados.con1
     SQL.Strings = (
       'select'
@@ -792,5 +805,461 @@ object frmMain: TfrmMain
       Origin = 'ENDERECO'
       Size = 150
     end
+  end
+  object frepEvolucao: TfrxReport
+    Version = '5.1.5'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    Preview = frpEvolucao
+    PreviewOptions.AllowEdit = False
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PreviewOptions.ZoomMode = zmPageWidth
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 42577.460074722200000000
+    ReportOptions.LastChange = 42577.460074722200000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 608
+    Top = 144
+    Datasets = <
+      item
+        DataSet = fdsEvolucaoPaciente
+        DataSetName = 'Evolucao'
+      end
+      item
+        DataSet = fdsDetalhePaciente
+        DataSetName = 'Paciente'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Height = 41.574830000000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        Child = frepEvolucao.Child1
+        DataSet = fdsDetalhePaciente
+        DataSetName = 'Paciente'
+        PrintChildIfInvisible = True
+        PrintIfDetailEmpty = True
+        RowCount = 0
+        object PacienteNOME: TfrxMemoView
+          Left = 52.913420000000000000
+          Width = 600.945270000000000000
+          Height = 18.897650000000000000
+          DataField = 'NOME'
+          DataSet = fdsDetalhePaciente
+          DataSetName = 'Paciente'
+          Memo.UTF8W = (
+            '[Paciente."NOME"]')
+        end
+        object PacienteNASCIMENTO: TfrxMemoView
+          Left = 86.929190000000000000
+          Top = 18.897650000000000000
+          Width = 162.519790000000000000
+          Height = 18.897650000000000000
+          DataField = 'NASCIMENTO'
+          DataSet = fdsDetalhePaciente
+          DataSetName = 'Paciente'
+          Memo.UTF8W = (
+            '[Paciente."NASCIMENTO"]')
+        end
+        object Memo1: TfrxMemoView
+          Left = 7.559060000000000000
+          Width = 45.354360000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Nome:')
+        end
+        object Memo2: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 18.897650000000000000
+          Width = 79.370130000000000000
+          Height = 18.897650000000000000
+          Memo.UTF8W = (
+            'Nascimento:')
+        end
+      end
+      object DetailData1: TfrxDetailData
+        FillType = ftBrush
+        Height = 45.354360000000000000
+        Top = 325.039580000000000000
+        Width = 718.110700000000000000
+        DataSet = fdsEvolucaoPaciente
+        DataSetName = 'Evolucao'
+        RowCount = 0
+        Stretched = True
+        object EvolucaoDATA_EVOLUCAO: TfrxMemoView
+          Left = 7.559060000000000000
+          Top = 3.779530000000000000
+          Width = 238.110390000000000000
+          Height = 18.897650000000000000
+          DataSet = fdsEvolucaoPaciente
+          DataSetName = 'Evolucao'
+          Fill.BackColor = clSkyBlue
+          Memo.UTF8W = (
+            'Data Evolu'#231#227'o: [Evolucao."DATA_EVOLUCAO"]')
+        end
+        object Rich6: TfrxRichView
+          Left = 7.559060000000000000
+          Top = 25.456710000000000000
+          Width = 699.213050000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
+            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
+            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
+            7366746564697420352E34312E32312E323531323B7D5C766965776B696E6434
+            5C7563315C706172645C66305C66733136205B45766F6C7563616F2E2245564F
+            4C5543414F225D5C7061720D0A7D0D0A00}
+        end
+      end
+      object Child1: TfrxChild
+        FillType = ftBrush
+        Height = 41.574830000000000000
+        Top = 83.149660000000000000
+        Width = 718.110700000000000000
+        Child = frepEvolucao.Child2
+        PrintChildIfInvisible = True
+        Stretched = True
+        object Memo3: TfrxMemoView
+          Left = 8.118120000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Fill.BackColor = clSkyBlue
+          Memo.UTF8W = (
+            'Diagn'#243'stico Cl'#237'nico:')
+        end
+        object Memo5: TfrxMemoView
+          Left = 374.173470000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Fill.BackColor = clSkyBlue
+          Memo.UTF8W = (
+            'Avalia'#231#227'o Terapeura:')
+        end
+        object Rich1: TfrxRichView
+          Left = 8.118120000000000000
+          Top = 18.897650000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
+            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
+            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
+            7366746564697420352E34312E32312E323531323B7D5C766965776B696E6434
+            5C7563315C706172645C66305C66733136205B50616369656E74652E22444941
+            475F434C494E49434F225D5C7061720D0A7D0D0A00}
+        end
+        object Rich2: TfrxRichView
+          Left = 374.173470000000000000
+          Top = 18.897650000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
+            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
+            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
+            7366746564697420352E34312E32312E323531323B7D5C766965776B696E6434
+            5C7563315C706172645C66305C66733136205B50616369656E74652E22415641
+            4C5F464953494F225D5C7061720D0A7D0D0A00}
+        end
+      end
+      object Child3: TfrxChild
+        FillType = ftBrush
+        Height = 41.574830000000000000
+        Top = 211.653680000000000000
+        Width = 718.110700000000000000
+        Stretched = True
+        object Memo7: TfrxMemoView
+          Left = 8.118120000000000000
+          Width = 699.213050000000000000
+          Height = 18.897650000000000000
+          Fill.BackColor = clSkyBlue
+          Memo.UTF8W = (
+            'Conduta Fisioterapeuta:')
+        end
+        object Rich3: TfrxRichView
+          Left = 7.559060000000000000
+          Top = 18.897650000000000000
+          Width = 699.213050000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
+            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
+            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
+            7366746564697420352E34312E32312E323531323B7D5C766965776B696E6434
+            5C7563315C706172645C66305C66733136205B50616369656E74652E22434F4E
+            445554415F464953494F225D5C7061720D0A7D0D0A00}
+        end
+      end
+      object Header1: TfrxHeader
+        FillType = ftBrush
+        Height = 26.456710000000000000
+        Top = 275.905690000000000000
+        Width = 718.110700000000000000
+        object Memo13: TfrxMemoView
+          Align = baClient
+          Width = 718.110700000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -21
+          Font.Name = 'Arial'
+          Font.Style = []
+          Fill.BackColor = 10026737
+          Memo.UTF8W = (
+            '    EVOLU'#199#195'O')
+          ParentFont = False
+        end
+      end
+      object Child2: TfrxChild
+        FillType = ftBrush
+        Height = 41.574830000000000000
+        Top = 147.401670000000000000
+        Width = 718.110700000000000000
+        Child = frepEvolucao.Child3
+        PrintChildIfInvisible = True
+        Stretched = True
+        object Memo4: TfrxMemoView
+          Left = 8.118120000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Fill.BackColor = clSkyBlue
+          Memo.UTF8W = (
+            'Diagn'#243'stico Fisioterapeuta:')
+        end
+        object Memo6: TfrxMemoView
+          Left = 374.173470000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          Fill.BackColor = clSkyBlue
+          Memo.UTF8W = (
+            'Objetivos:')
+        end
+        object Rich4: TfrxRichView
+          Left = 8.118120000000000000
+          Top = 18.897650000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
+            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
+            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
+            7366746564697420352E34312E32312E323531323B7D5C766965776B696E6434
+            5C7563315C706172645C66305C66733136205B50616369656E74652E22444941
+            475F464953494F225D5C7061720D0A7D0D0A00}
+        end
+        object Rich5: TfrxRichView
+          Left = 374.173470000000000000
+          Top = 18.897650000000000000
+          Width = 340.157700000000000000
+          Height = 18.897650000000000000
+          StretchMode = smMaxHeight
+          GapX = 2.000000000000000000
+          GapY = 1.000000000000000000
+          RichEdit = {
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
+            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
+            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
+            7366746564697420352E34312E32312E323531323B7D5C766965776B696E6434
+            5C7563315C706172645C66305C66733136205B50616369656E74652E224F424A
+            455449564F225D5C7061720D0A7D0D0A00}
+        end
+      end
+    end
+  end
+  object fdqDetalhePaciente: TFDQuery
+    MasterSource = dsPacientes
+    MasterFields = 'ID_PACIENTE'
+    Connection = dmDados.con1
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableDelete = False
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
+    SQL.Strings = (
+      'select'
+      '    p.id_paciente, '
+      '    p.codigo,'
+      '    p.nome,'
+      '    p.nascimento,'
+      '    p.endereco,'
+      '    p.diag_clinico,'
+      '    p.aval_fisio,'
+      '    p.diag_fisio,'
+      '    p.objetivo,'
+      '    p.conduta_fisio'
+      'from'
+      '    pacientes p'
+      'where'
+      '   p.id_paciente = :id_paciente')
+    Left = 472
+    Top = 224
+    ParamData = <
+      item
+        Name = 'ID_PACIENTE'
+        DataType = ftLargeint
+        ParamType = ptInput
+      end>
+    object fdqDetalhePacienteID_PACIENTE: TLargeintField
+      FieldName = 'ID_PACIENTE'
+      Origin = 'ID_PACIENTE'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqDetalhePacienteCODIGO: TLargeintField
+      FieldName = 'CODIGO'
+      Origin = 'CODIGO'
+      Required = True
+    end
+    object fdqDetalhePacienteNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'NOME'
+      Required = True
+      Size = 150
+    end
+    object fdqDetalhePacienteNASCIMENTO: TDateField
+      FieldName = 'NASCIMENTO'
+      Origin = 'NASCIMENTO'
+    end
+    object fdqDetalhePacienteENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'ENDERECO'
+      Size = 150
+    end
+    object fdqDetalhePacienteDIAG_CLINICO: TMemoField
+      FieldName = 'DIAG_CLINICO'
+      Origin = 'DIAG_CLINICO'
+      BlobType = ftMemo
+    end
+    object fdqDetalhePacienteAVAL_FISIO: TMemoField
+      FieldName = 'AVAL_FISIO'
+      Origin = 'AVAL_FISIO'
+      BlobType = ftMemo
+    end
+    object fdqDetalhePacienteDIAG_FISIO: TMemoField
+      FieldName = 'DIAG_FISIO'
+      Origin = 'DIAG_FISIO'
+      BlobType = ftMemo
+    end
+    object fdqDetalhePacienteOBJETIVO: TMemoField
+      FieldName = 'OBJETIVO'
+      Origin = 'OBJETIVO'
+      BlobType = ftMemo
+    end
+    object fdqDetalhePacienteCONDUTA_FISIO: TMemoField
+      FieldName = 'CONDUTA_FISIO'
+      Origin = 'CONDUTA_FISIO'
+      BlobType = ftMemo
+    end
+  end
+  object fdqEvolucaoPaciente: TFDQuery
+    MasterSource = dsPacientes
+    MasterFields = 'ID_PACIENTE'
+    Connection = dmDados.con1
+    UpdateOptions.AssignedValues = [uvEDelete, uvEInsert, uvEUpdate]
+    UpdateOptions.EnableInsert = False
+    UpdateOptions.EnableUpdate = False
+    SQL.Strings = (
+      'select'
+      '    e.id_evolucao, '
+      '    e.data_evolucao,'
+      '    e.evolucao,'
+      '    e.fk_paciente'
+      'from'
+      '    evolucao e'
+      'where'
+      '   e.fk_paciente = :id_paciente')
+    Left = 480
+    Top = 272
+    ParamData = <
+      item
+        Name = 'ID_PACIENTE'
+        DataType = ftLargeint
+        ParamType = ptInput
+      end>
+    object fdqEvolucaoPacienteID_EVOLUCAO: TLargeintField
+      FieldName = 'ID_EVOLUCAO'
+      Origin = 'ID_EVOLUCAO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object fdqEvolucaoPacienteDATA_EVOLUCAO: TDateField
+      FieldName = 'DATA_EVOLUCAO'
+      Origin = 'DATA_EVOLUCAO'
+      Required = True
+    end
+    object fdqEvolucaoPacienteEVOLUCAO: TMemoField
+      FieldName = 'EVOLUCAO'
+      Origin = 'EVOLUCAO'
+      Required = True
+      BlobType = ftMemo
+    end
+    object fdqEvolucaoPacienteFK_PACIENTE: TLargeintField
+      FieldName = 'FK_PACIENTE'
+      Origin = 'FK_PACIENTE'
+    end
+  end
+  object dtsDetalhePaciente: TDataSource
+    DataSet = fdqDetalhePaciente
+    Left = 504
+    Top = 224
+  end
+  object dtsEvolucaoPaciente: TDataSource
+    DataSet = fdqEvolucaoPaciente
+    Left = 512
+    Top = 272
+  end
+  object fdsDetalhePaciente: TfrxDBDataset
+    UserName = 'Paciente'
+    CloseDataSource = False
+    DataSource = dtsDetalhePaciente
+    BCDToCurrency = False
+    Left = 552
+    Top = 200
+  end
+  object fdsEvolucaoPaciente: TfrxDBDataset
+    UserName = 'Evolucao'
+    CloseDataSource = False
+    DataSource = dtsEvolucaoPaciente
+    BCDToCurrency = False
+    Left = 560
+    Top = 264
+  end
+  object frxRichObject1: TfrxRichObject
+    Left = 400
+    Top = 344
   end
 end
